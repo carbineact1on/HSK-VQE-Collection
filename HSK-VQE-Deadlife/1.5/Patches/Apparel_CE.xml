@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    HSK CE patches for VQE Deadlife combat apparel.
+
+    Only Military Coat is combat-relevant — its upstream armor values
+    (Sharp 0.32 / Blunt 0.11) are on the vanilla armor scale. HSK CE
+    uses a much higher numeric scale (vanilla parka = Sharp 5, flak
+    jacket = Sharp 12). Without these patches the coat provides
+    essentially zero protection against any modern weapon under CE.
+
+    General's Insignia and General's Cap are intentionally cosmetic
+    (zero / token armor) — left untouched.
+
+    Pattern reference: HSK CE parka / duster / military coat tier.
+-->
+<Patch>
+
+    <!-- ===== Military Coat — HSK CE parka / duster tier ===== -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_Apparel_MilitaryCoat"]/statBases/ArmorRating_Sharp</xpath>
+        <value><ArmorRating_Sharp>8</ArmorRating_Sharp></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_Apparel_MilitaryCoat"]/statBases/ArmorRating_Blunt</xpath>
+        <value><ArmorRating_Blunt>4</ArmorRating_Blunt></value>
+    </Operation>
+
+    <!-- Add CE Bulk / WornBulk so the coat occupies inventory space sensibly.
+         Outerwear convention: Bulk ~4 (carrying), WornBulk ~1.4 (wearing). -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_Apparel_MilitaryCoat"]/statBases</xpath>
+        <value>
+            <Bulk>4.0</Bulk>
+            <WornBulk>1.4</WornBulk>
+        </value>
+    </Operation>
+
+</Patch>
