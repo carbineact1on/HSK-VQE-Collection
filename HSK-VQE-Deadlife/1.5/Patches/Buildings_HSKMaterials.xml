@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    HSK material swaps for VQE Deadlife deconstructable ancient structures.
+
+    All targeted buildings are deconstructable (vanilla default), so when
+    players raid an ancient quest site they get a fraction of the costList
+    materials back. Without these swaps, that yield would be raw Steel /
+    Uranium — both vanilla materials that don't fit HSK's refined-alloy
+    economy.
+
+    Mappings:
+      Steel    → SteelBar          (HSK refined steel — used by all HSK
+                                     mid-tier construction)
+      Uranium  → DepletedUranium   (HSK refined uranium alloy — same swap
+                                     we apply to VFE Pirates / VFE Ancients)
+
+    Quantities preserved 1:1. Buildings still cost the same to construct
+    if a player ever places one (rare — these are quest-spawn structures),
+    just with HSK-tier materials.
+-->
+<Patch>
+
+    <!-- ===== Steel → SteelBar ===== -->
+
+    <!-- Open Deadlife Casket: Steel:25 → SteelBar:25 -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_OpenDeadlifeCasket"]/costList/Steel</xpath>
+        <value><SteelBar>25</SteelBar></value>
+    </Operation>
+
+    <!-- Closed Deadlife Casket: Steel:25 → SteelBar:25 -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_ClosedDeadlifeCasket"]/costList/Steel</xpath>
+        <value><SteelBar>25</SteelBar></value>
+    </Operation>
+
+    <!-- Dormant Military Turret: Steel:10 → SteelBar:10 -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_DormantMilitaryTurret"]/costList/Steel</xpath>
+        <value><SteelBar>10</SteelBar></value>
+    </Operation>
+
+    <!-- Ancient Military Turret: Steel:10 → SteelBar:10 -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_AncientMilitaryTurret"]/costList/Steel</xpath>
+        <value><SteelBar>10</SteelBar></value>
+    </Operation>
+
+    <!-- Ancient Kino Screen: Steel:150 → SteelBar:150 -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_AncientKinoScreen"]/costList/Steel</xpath>
+        <value><SteelBar>150</SteelBar></value>
+    </Operation>
+
+    <!-- Ancient Kino Projector: Steel:30 → SteelBar:30 -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_AncientKinoProjector"]/costList/Steel</xpath>
+        <value><SteelBar>30</SteelBar></value>
+    </Operation>
+
+    <!-- ===== Uranium → DepletedUranium ===== -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_OpenDeadlifeCasket"]/costList/Uranium</xpath>
+        <value><DepletedUranium>3</DepletedUranium></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_ClosedDeadlifeCasket"]/costList/Uranium</xpath>
+        <value><DepletedUranium>3</DepletedUranium></value>
+    </Operation>
+
+</Patch>

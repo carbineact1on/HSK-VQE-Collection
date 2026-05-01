@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>HSK Patch: VQE Deadlife</name>
+    <packageId>CarbineAction.HSK.VQE.Deadlife.Compat</packageId>
+    <author>CarbineAction</author>
+    <supportedVersions>
+        <li>1.5</li>
+    </supportedVersions>
+    <description>Hardcore SK compatibility patch for Vanilla Quests Expanded — Deadlife.
+
+Brings VQE Deadlife structures and weapons into HSK conventions:
+
+- Material swaps on deconstructable ancient structures so deconstruction returns HSK-native refined materials:
+  * Steel → SteelBar (Open/Closed Deadlife caskets, Dormant/Ancient Military Turrets, Kino Screen, Kino Projector)
+  * Uranium → DepletedUranium (Open/Closed Deadlife caskets)
+
+- Combat Extended patches for the 4 ancient weapons (Autopistol, Machine Pistol, Pump Shotgun, LMG) so they fire correctly under HSK CE.
+
+No content additions or removals — purely an XML PatchOperation overlay on top of the upstream VQE Deadlife mod.
+
+Required: Vanilla Quests Expanded - Deadlife, Hardcore SK, Combat Extended, Anomaly DLC.</description>
+    <modDependencies>
+        <li>
+            <packageId>vanillaquestsexpanded.deadlife</packageId>
+            <displayName>Vanilla Quests Expanded - Deadlife</displayName>
+        </li>
+        <li>
+            <packageId>skyarkhangel.HSK</packageId>
+            <displayName>Hardcore SK</displayName>
+        </li>
+        <li>
+            <packageId>CETeam.CombatExtended</packageId>
+            <displayName>Combat Extended</displayName>
+        </li>
+    </modDependencies>
+    <loadAfter>
+        <li>vanillaquestsexpanded.deadlife</li>
+        <li>skyarkhangel.HSK</li>
+        <li>CETeam.CombatExtended</li>
+    </loadAfter>
+</ModMetaData>

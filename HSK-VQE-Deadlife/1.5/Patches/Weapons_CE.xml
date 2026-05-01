@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    HSK CE patches for VQE Deadlife ancient weapons.
+
+    Without these patches the 4 ancient weapons fall back to vanilla
+    Verb_Shoot behavior under CE — they fire vanilla projectiles at
+    HSK pawns who otherwise expect CE-aware ammo + projectiles, breaking
+    accuracy / damage / armor penetration math.
+
+    Calibers picked from HSK-CE-active set (HSK disables many CE
+    calibers via .xml.bak; these are confirmed loaded in HSK CE):
+      - Ancient Autopistol      → 9x19mm Parabellum (light pistol)
+      - Ancient Machine Pistol  → 9x19mm Parabellum (burst pistol)
+      - Ancient Pump Shotgun    → 12 Gauge buckshot
+      - Ancient LMG             → 7.62x51mm NATO (M60 / FN MAG class)
+
+    Burst counts, ranges, warmup, accuracy preserved from upstream
+    so weapon feel matches the upstream balance — only the projectile
+    + ammo system gets CE-ified.
+-->
+<Patch>
+
+    <!-- ========== Ancient Autopistol — 9x19mm Parabellum ========== -->
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>VQED_Gun_Autopistol_Ancient</defName>
+        <statBases>
+            <RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+            <SightsEfficiency>0.8</SightsEfficiency>
+            <ShotSpread>0.27</ShotSpread>
+            <SwayFactor>1.20</SwayFactor>
+            <Bulk>1.80</Bulk>
+        </statBases>
+        <Properties>
+            <recoilAmount>2.50</recoilAmount>
+            <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_9x19mmPara_FMJ</defaultProjectile>
+            <warmupTime>0.3</warmupTime>
+            <range>22</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Shot_Autopistol</soundCast>
+            <soundCastTail>GunTail_Light</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+        </Properties>
+        <AmmoUser>
+            <magazineSize>15</magazineSize>
+            <reloadTime>2.6</reloadTime>
+            <ammoSet>AmmoSet_9x19mmPara</ammoSet>
+        </AmmoUser>
+        <FireModes>
+            <aiAimMode>AimedShot</aiAimMode>
+        </FireModes>
+    </Operation>
+
+    <!-- ========== Ancient Machine Pistol — 9x19mm Parabellum (burst) ========== -->
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>VQED_Gun_MachinePistol_Ancient</defName>
+        <statBases>
+            <RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+            <SightsEfficiency>0.7</SightsEfficiency>
+            <ShotSpread>0.40</ShotSpread>
+            <SwayFactor>1.40</SwayFactor>
+            <Bulk>2.40</Bulk>
+        </statBases>
+        <Properties>
+            <recoilAmount>1.30</recoilAmount>
+            <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_9x19mmPara_FMJ</defaultProjectile>
+            <warmupTime>0.5</warmupTime>
+            <range>20</range>
+            <burstShotCount>3</burstShotCount>
+            <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+            <soundCast>Shot_MachinePistol</soundCast>
+            <soundCastTail>GunTail_Light</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+        </Properties>
+        <AmmoUser>
+            <magazineSize>30</magazineSize>
+            <reloadTime>3.0</reloadTime>
+            <ammoSet>AmmoSet_9x19mmPara</ammoSet>
+        </AmmoUser>
+        <FireModes>
+            <aiAimMode>SuppressFire</aiAimMode>
+            <noSingleShot>true</noSingleShot>
+        </FireModes>
+    </Operation>
+
+    <!-- ========== Ancient Pump Shotgun — 12 Gauge ========== -->
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>VQED_Gun_PumpShotgun_Ancient</defName>
+        <statBases>
+            <RangedWeapon_Cooldown>1.25</RangedWeapon_Cooldown>
+            <SightsEfficiency>0.85</SightsEfficiency>
+            <ShotSpread>0.20</ShotSpread>
+            <SwayFactor>1.45</SwayFactor>
+            <Bulk>4.00</Bulk>
+        </statBases>
+        <Properties>
+            <recoilAmount>2.80</recoilAmount>
+            <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_12Gauge_Buck</defaultProjectile>
+            <warmupTime>0.9</warmupTime>
+            <range>16</range>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Shot_Shotgun</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+        </Properties>
+        <AmmoUser>
+            <magazineSize>6</magazineSize>
+            <reloadTime>5.0</reloadTime>
+            <ammoSet>AmmoSet_12Gauge</ammoSet>
+        </AmmoUser>
+        <FireModes>
+            <aiAimMode>AimedShot</aiAimMode>
+        </FireModes>
+    </Operation>
+
+    <!-- ========== Ancient LMG — 7.62x51mm NATO (heavy MG) ========== -->
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>VQED_Gun_LMG_Ancient</defName>
+        <statBases>
+            <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+            <SightsEfficiency>0.95</SightsEfficiency>
+            <ShotSpread>0.10</ShotSpread>
+            <SwayFactor>1.25</SwayFactor>
+            <Bulk>10.5</Bulk>
+        </statBases>
+        <Properties>
+            <recoilAmount>1.45</recoilAmount>
+            <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_762x51mmNATO_FMJ</defaultProjectile>
+            <warmupTime>1.8</warmupTime>
+            <range>50</range>
+            <burstShotCount>6</burstShotCount>
+            <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+            <soundCast>Shot_Minigun</soundCast>
+            <soundCastTail>GunTail_Medium</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+        </Properties>
+        <AmmoUser>
+            <magazineSize>100</magazineSize>
+            <reloadTime>10.0</reloadTime>
+            <ammoSet>AmmoSet_762x51mmNATO</ammoSet>
+        </AmmoUser>
+        <FireModes>
+            <aiAimMode>SuppressFire</aiAimMode>
+            <noSnapshot>true</noSnapshot>
+            <noSingleShot>true</noSingleShot>
+        </FireModes>
+    </Operation>
+
+</Patch>
