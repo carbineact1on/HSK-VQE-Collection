@@ -1,47 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-    <name>HSK Patch: VQE Cryptoforge</name>
-    <packageId>CarbineAction.HSK.VQE.Cryptoforge.Compat</packageId>
-    <author>CarbineAction</author>
+    <name>VQE Cryptoforge (HSK/CE Patched)</name>
+    <packageId>CarbineAction.HSK.VQE.Cryptoforge</packageId>
+    <author>Oskar Potocki, Sarg Bjornson, Taranchuk — HSK/CE patch by CarbineAction (CE patch by Airomeda, bundled from CombatExtended-Continued PR #3780)</author>
+    <modIconPath IgnoreIfNoMatchingField="True">UI/VELogo</modIconPath>
     <supportedVersions>
         <li>1.5</li>
     </supportedVersions>
-    <description>Hardcore SK + Combat Extended compatibility patch for Vanilla Quests Expanded — Cryptoforge.
+    <description>HSK/CE-patched standalone version of Vanilla Quests Expanded — Cryptoforge, tuned for the Hardcore SK modpack.
 
-This patch bundles the official upstream CE patch (PR #3780 by Airomeda, merged into CombatExtended-Continued 2025-04-25) so it works inside HSK's stripped CE redistribution, then layers HSK-native material swaps on top.
+This bundles the upstream VQE Cryptoforge mod content, the official upstream CE patch (PR #3780 by Airomeda), and HSK conventions all baked in. Do NOT enable the Steam Workshop version of VQE Cryptoforge alongside this — they would duplicate each other's defs.
 
-Bundled CE patches (covers crypto weapons, apparel, race, hediffs, sentry):
-  - VQEC_Things_Weapons.xml (Cryptobolter + Cryptoaxe CE conversion)
-  - VQEC_Apparel_Various.xml (4 crypto armor pieces, CE armor scale + Bulk)
-  - VQEC_Races_Animal_Insect.xml (cryptofused insectoid armor)
-  - VQEC_Things_Sentry.xml (ancient turret CE)
-  - VQEC_Hediffs_Global_Misc.xml
-  - VQEC_Ammo_Cryptoforge.xml (defines crypto bolt ammo + AmmoSet)
+Bundled CE patches (cryptofreeze mechanics preserved):
+- Crypto weapons (Cryptobolter + Cryptoaxe) — full CE conversion
+- Crypto armors (light / heavy + helmets) — HSK CE armor scale (Sharp 16-28, Blunt 36-60)
+- Cryptofused insectoid race — CE armor + body part scaling
+- Crypto bolt ammo + AmmoSet definitions
+- Ancient sentry turret CE conversion
 
-HSK overlay (this mod's contribution):
-  - Ammo recipe: Steel → SteelBar so HSK colonists craft from refined alloys
-  - Building costLists: Steel → SteelBar across 25 deconstructable structures
-    (cryptopods, production benches, turrets, ship debris, decorative)
-  - Cryptopod costLists: Uranium → DepletedUranium (HSK refined isotope)
+HSK overlay:
+- Crypto bolt ammo recipe: Steel → SteelBar
+- 25 deconstructable building costLists: Steel → SteelBar
+- 2 cryptopod costLists: Uranium → DepletedUranium
+- 6 craftable items (cryptoaxe, cryptobolter, 2 armors, 2 helmets): Gold → GoldBar
+- VQE_GoldPile loot building intentionally kept as raw Gold (ore-pile flavor)
+- Plasteel / ComponentSpacer / ComponentIndustrial left as-is (already HSK-native)
 
-Required: Vanilla Quests Expanded - Cryptoforge, Hardcore SK, Combat Extended.</description>
+Quest design preserved: Cryptobolter and Cryptoaxe stay locked to the AncientCryptoforge bench during the limited quest crafting window, exactly as upstream intended. HSKRNRouter intentionally does not move them.
+
+Original mod by Oskar Potocki, Sarg Bjornson, Taranchuk. CE patch by Airomeda. HSK/CE conversion by CarbineAction.
+
+Required: Hardcore SK, Combat Extended.</description>
     <modDependencies>
         <li>
-            <packageId>vanillaquestsexpanded.cryptoforge</packageId>
-            <displayName>Vanilla Quests Expanded - Cryptoforge</displayName>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+            <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+        </li>
+        <li>
+            <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+            <displayName>Vanilla Expanded Framework</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2023507013</steamWorkshopUrl>
+            <downloadUrl>https://github.com/Vanilla-Expanded/VanillaExpandedFramework</downloadUrl>
         </li>
         <li>
             <packageId>skyarkhangel.HSK</packageId>
             <displayName>Hardcore SK</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2424766948</steamWorkshopUrl>
         </li>
         <li>
             <packageId>CETeam.CombatExtended</packageId>
             <displayName>Combat Extended</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2890901044</steamWorkshopUrl>
         </li>
     </modDependencies>
     <loadAfter>
-        <li>vanillaquestsexpanded.cryptoforge</li>
+        <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
         <li>skyarkhangel.HSK</li>
         <li>CETeam.CombatExtended</li>
     </loadAfter>
+    <incompatibleWith>
+        <li>vanillaquestsexpanded.cryptoforge</li>
+    </incompatibleWith>
 </ModMetaData>

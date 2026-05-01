@@ -1,41 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-    <name>HSK Patch: VQE Generator</name>
-    <packageId>CarbineAction.HSK.VQE.Generator.Compat</packageId>
-    <author>CarbineAction</author>
+    <name>VQE Generator (HSK/CE Patched)</name>
+    <packageId>CarbineAction.HSK.VQE.Generator</packageId>
+    <author>Oskar Potocki, Sarg Bjornson, Taranchuk, Bread mo — HSK/CE patch by CarbineAction</author>
+    <modIconPath IgnoreIfNoMatchingField="True">UI/VELogo</modIconPath>
     <supportedVersions>
         <li>1.5</li>
     </supportedVersions>
-    <description>Hardcore SK compatibility patch for Vanilla Quests Expanded — The Generator.
+    <description>HSK/CE-patched standalone version of Vanilla Quests Expanded — The Generator, tuned for the Hardcore SK modpack.
 
-Brings VQE Generator structures and apparel into HSK conventions:
+This bundles the upstream VQE Generator mod content with HSK conventions and Combat Extended patches baked in. Do NOT enable the Steam Workshop version of VQE Generator alongside this — they would duplicate each other's defs.
 
-- Material swaps on all ARC genetrons (Basic, Wood-fired ×4, Chemfuel ×4, Geothermal ×4, Nuclear ×4) and ruined ancient buildings so deconstruction returns HSK-native refined materials:
+HSK/CE patches included:
+- Material swaps on all 16 ARC genetrons (Basic, Wood-fired ×4, Chemfuel ×4, Geothermal ×4, Nuclear ×4) and 7 ruined ancient ARC structures so deconstruction returns HSK-native refined materials:
   * Steel → SteelBar
   * Uranium → DepletedUranium
+  * Gold → GoldBar (HSK refined alloy)
+- Plasteel / ComponentSpacer / ComponentIndustrial left as-is (already HSK-native)
+- HSK CE armor rescale on the Ancient Tight Parka (Sharp 8 / Blunt 4 + Bulk 4.0 / WornBulk 1.4).
 
-- Combat Extended rescale for the Ancient Tight Parka (Sharp / Blunt / Bulk / WornBulk) so it fits HSK CE armor math.
+Original mod by Oskar Potocki, Sarg Bjornson, Taranchuk, Bread mo. HSK/CE conversion by CarbineAction.
 
-No content additions or removals — purely an XML PatchOperation overlay on top of the upstream VQE Generator mod.
-
-Required: Vanilla Quests Expanded - The Generator, Hardcore SK, Combat Extended.</description>
+Required: Hardcore SK, Combat Extended.</description>
     <modDependencies>
         <li>
-            <packageId>vanillaquestsexpanded.generator</packageId>
-            <displayName>Vanilla Quests Expanded - The Generator</displayName>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+            <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+        </li>
+        <li>
+            <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+            <displayName>Vanilla Expanded Framework</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2023507013</steamWorkshopUrl>
+            <downloadUrl>https://github.com/Vanilla-Expanded/VanillaExpandedFramework</downloadUrl>
         </li>
         <li>
             <packageId>skyarkhangel.HSK</packageId>
             <displayName>Hardcore SK</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2424766948</steamWorkshopUrl>
         </li>
         <li>
             <packageId>CETeam.CombatExtended</packageId>
             <displayName>Combat Extended</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2890901044</steamWorkshopUrl>
         </li>
     </modDependencies>
     <loadAfter>
-        <li>vanillaquestsexpanded.generator</li>
+        <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
         <li>skyarkhangel.HSK</li>
         <li>CETeam.CombatExtended</li>
     </loadAfter>
+    <incompatibleWith>
+        <li>vanillaquestsexpanded.generator</li>
+    </incompatibleWith>
 </ModMetaData>

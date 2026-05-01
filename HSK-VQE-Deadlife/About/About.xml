@@ -1,41 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-    <name>HSK Patch: VQE Deadlife</name>
-    <packageId>CarbineAction.HSK.VQE.Deadlife.Compat</packageId>
-    <author>CarbineAction</author>
+    <name>VQE Deadlife (HSK/CE Patched)</name>
+    <packageId>CarbineAction.HSK.VQE.Deadlife</packageId>
+    <author>Oskar Potocki, Sarg Bjornson, Taranchuk, Ferny — HSK/CE patch by CarbineAction</author>
+    <modIconPath IgnoreIfNoMatchingField="True">UI/VELogo</modIconPath>
     <supportedVersions>
         <li>1.5</li>
     </supportedVersions>
-    <description>Hardcore SK compatibility patch for Vanilla Quests Expanded — Deadlife.
+    <description>HSK/CE-patched standalone version of Vanilla Quests Expanded — Deadlife, tuned for the Hardcore SK modpack.
 
-Brings VQE Deadlife structures and weapons into HSK conventions:
+This bundles the upstream VQE Deadlife mod content with HSK conventions and Combat Extended patches baked in. Do NOT enable the Steam Workshop version of VQE Deadlife alongside this — they would duplicate each other's defs.
 
+HSK/CE patches included:
 - Material swaps on deconstructable ancient structures so deconstruction returns HSK-native refined materials:
   * Steel → SteelBar (Open/Closed Deadlife caskets, Dormant/Ancient Military Turrets, Kino Screen, Kino Projector)
   * Uranium → DepletedUranium (Open/Closed Deadlife caskets)
+  * +ComponentIndustrial / +ComponentSpacer / +Plasteel layers added per HSK tech tier (industrial vs ultratech)
 
-- Combat Extended patches for the 4 ancient weapons (Autopistol, Machine Pistol, Pump Shotgun, LMG) so they fire correctly under HSK CE.
+- Combat Extended patches for the 4 ancient weapons (Autopistol, Machine Pistol, Pump Shotgun, LMG) so they fire correctly under HSK CE:
+  * 9×19mm Parabellum (Autopistol + Machine Pistol)
+  * 12 Gauge Buckshot (Pump Shotgun)
+  * 7.62×51mm NATO (LMG)
 
-No content additions or removals — purely an XML PatchOperation overlay on top of the upstream VQE Deadlife mod.
+- HSK CE armor rescale on the Military Coat (Sharp 8 / Blunt 4 + Bulk 4.0 / WornBulk 1.4).
 
-Required: Vanilla Quests Expanded - Deadlife, Hardcore SK, Combat Extended, Anomaly DLC.</description>
+Original mod by Oskar Potocki, Sarg Bjornson, Taranchuk, Ferny. HSK/CE conversion by CarbineAction.
+
+Required: Hardcore SK, Combat Extended, Anomaly DLC.</description>
     <modDependencies>
         <li>
-            <packageId>vanillaquestsexpanded.deadlife</packageId>
-            <displayName>Vanilla Quests Expanded - Deadlife</displayName>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+            <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+        </li>
+        <li>
+            <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+            <displayName>Vanilla Expanded Framework</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2023507013</steamWorkshopUrl>
+            <downloadUrl>https://github.com/Vanilla-Expanded/VanillaExpandedFramework</downloadUrl>
         </li>
         <li>
             <packageId>skyarkhangel.HSK</packageId>
             <displayName>Hardcore SK</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2424766948</steamWorkshopUrl>
         </li>
         <li>
             <packageId>CETeam.CombatExtended</packageId>
             <displayName>Combat Extended</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2890901044</steamWorkshopUrl>
         </li>
     </modDependencies>
     <loadAfter>
-        <li>vanillaquestsexpanded.deadlife</li>
+        <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
         <li>skyarkhangel.HSK</li>
         <li>CETeam.CombatExtended</li>
     </loadAfter>
+    <incompatibleWith>
+        <li>vanillaquestsexpanded.deadlife</li>
+    </incompatibleWith>
 </ModMetaData>
