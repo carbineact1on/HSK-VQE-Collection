@@ -97,4 +97,99 @@
         </value>
     </Operation>
 
+    <!-- ===== Industrial-tier additions (11 buildings) =====
+         Buildings already had ChunkSlagSteel costLists — add ComponentIndustrial
+         on top so deconstructing yields proper HSK industrial loot. -->
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_AncientBurnoutGenerator"]/costList</xpath>
+        <value><ComponentIndustrial>2</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_IndustrialBurnoutGenerator"]/costList</xpath>
+        <value><ComponentIndustrial>4</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_AncientHawk"]/costList</xpath>
+        <value><ComponentIndustrial>5</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_AncientLandship"]/costList</xpath>
+        <value><ComponentIndustrial>5</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_AncientTank"]/costList</xpath>
+        <value><ComponentIndustrial>4</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_UnwrappedAncientTank"]/costList</xpath>
+        <value><ComponentIndustrial>4</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_DefunctTerminal"]/costList</xpath>
+        <value><ComponentIndustrial>1</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_DefunctTerminalBank"]/costList</xpath>
+        <value><ComponentIndustrial>3</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_BustedMinigunTurret"]/costList</xpath>
+        <value><ComponentIndustrial>2</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_ActiveTerminal"]/costList</xpath>
+        <value><ComponentIndustrial>2</ComponentIndustrial></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_AncientFuelPipeline"]/costList</xpath>
+        <value><ComponentIndustrial>2</ComponentIndustrial></value>
+    </Operation>
+
+    <!-- ===== Ultratech-tier additions (4 buildings) =====
+         Archotech-tier ancient relics — add ComponentSpacer + Plasteel
+         on top of existing ChunkSlagSteel for proper HSK ultratech loot. -->
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_RuinedInhibitorLeft"]/costList</xpath>
+        <value>
+            <Plasteel>15</Plasteel>
+            <ComponentSpacer>1</ComponentSpacer>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_RuinedInhibitorRight"]/costList</xpath>
+        <value>
+            <Plasteel>15</Plasteel>
+            <ComponentSpacer>1</ComponentSpacer>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_ICBMLaunchTerminal"]/costList</xpath>
+        <value>
+            <Plasteel>20</Plasteel>
+            <ComponentSpacer>2</ComponentSpacer>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQED_AncientOminousMachinery"]/costList</xpath>
+        <value>
+            <Plasteel>10</Plasteel>
+            <ComponentSpacer>1</ComponentSpacer>
+        </value>
+    </Operation>
+
 </Patch>
