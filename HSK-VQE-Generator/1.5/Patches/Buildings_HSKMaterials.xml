@@ -78,6 +78,12 @@
         <value><SteelBar>100</SteelBar></value>
     </Operation>
 
+    <!-- ChemfuelCharged also uses Gold (raw ore) → GoldBar -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_ChemfuelCharged"]/costList/Gold</xpath>
+        <value><GoldBar>100</GoldBar></value>
+    </Operation>
+
     <Operation Class="PatchOperationReplace">
         <xpath>Defs/ThingDef[defName="VQE_Genetron_ChemfuelFortified"]/costList/Steel</xpath>
         <value><SteelBar>220</SteelBar></value>
@@ -125,8 +131,13 @@
         <value><SteelBar>100</SteelBar></value>
     </Operation>
 
-    <!-- Isotopic: Plasteel + Gold + ComponentSpacer — already HSK native, no change -->
-    <!-- Atomic:   Plasteel + ComponentSpacer       — already HSK native, no change -->
+    <!-- Isotopic: Gold (raw ore) → GoldBar (HSK refined alloy) -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_Isotopic"]/costList/Gold</xpath>
+        <value><GoldBar>100</GoldBar></value>
+    </Operation>
+
+    <!-- Atomic: Plasteel + ComponentSpacer — already HSK native, no change -->
 
     <!-- ================================================================ -->
     <!--  RUINED ANCIENT ARC STRUCTURES (Buildings_Misc)                   -->

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    HSK overlay on Cryptoforge crafting recipes + costLists.
+
+    Upstream Cryptoforge uses two raw ores in its recipes that should
+    be the HSK refined alloys instead:
+
+      Steel → SteelBar  (ammo recipe)
+      Gold  → GoldBar   (weapons + armor crafted at AncientCryptoforge)
+
+    HSK has both Gold (raw ore, label "Gold Ore") and GoldBar (refined
+    alloy of Gold + Copper / Bauxite). Crafting recipes for ultratech
+    weapons + armor should consume the refined alloy per HSK convention,
+    not the raw ore which is mined directly from the map.
+
+    Plasteel + ComponentSpacer + ComponentIndustrial are already
+    HSK-native and unchanged.
+
+    Note: VQE_GoldPile (loot building) intentionally keeps raw <Gold>
+    since it represents an ore-pile loot drop, not a refined item.
+-->
+<Patch>
+
+    <!-- Replace the Steel ingredient block (count 10) with SteelBar -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/RecipeDef[defName="MakeAmmo_VQEC_CryptoBolt"]/ingredients/li[filter/thingDefs/li="Steel"]</xpath>
+        <value>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>SteelBar</li>
+                    </thingDefs>
+                </filter>
+                <count>10</count>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- Replace the fixedIngredientFilter entry: Steel → SteelBar -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/RecipeDef[defName="MakeAmmo_VQEC_CryptoBolt"]/fixedIngredientFilter/thingDefs/li[text()="Steel"]</xpath>
+        <value>
+            <li>SteelBar</li>
+        </value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  CRYPTOFORGE WEAPONS — recipeMaker costList Gold → GoldBar        -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_MeleeWeapon_Cryptoaxe"]/costList/Gold</xpath>
+        <value><GoldBar>6</GoldBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Weapon_Cryptobolter"]/costList/Gold</xpath>
+        <value><GoldBar>6</GoldBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  CRYPTOFORGE ARMOR — recipeMaker costList Gold → GoldBar          -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_CryptoArmor"]/costList/Gold</xpath>
+        <value><GoldBar>60</GoldBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_CryptoHeavyArmor"]/costList/Gold</xpath>
+        <value><GoldBar>100</GoldBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Apparel_CryptoLightHelmet"]/costList/Gold</xpath>
+        <value><GoldBar>30</GoldBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Apparel_CryptoHeavyHelmet"]/costList/Gold</xpath>
+        <value><GoldBar>30</GoldBar></value>
+    </Operation>
+
+</Patch>
