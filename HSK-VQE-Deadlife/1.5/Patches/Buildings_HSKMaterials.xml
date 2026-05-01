@@ -1,73 +1,100 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    HSK material swaps for VQE Deadlife deconstructable ancient structures.
+    HSK recipe upgrades for VQE Deadlife deconstructable ancient structures.
 
     All targeted buildings are deconstructable (vanilla default), so when
     players raid an ancient quest site they get a fraction of the costList
-    materials back. Without these swaps, that yield would be raw Steel /
-    Uranium — both vanilla materials that don't fit HSK's refined-alloy
-    economy.
+    materials back. Without these upgrades the yield would be raw Steel /
+    Uranium — both vanilla materials that don't fit HSK's
+    refined-alloy + component-tier economy.
 
-    Mappings:
-      Steel    → SteelBar          (HSK refined steel — used by all HSK
-                                     mid-tier construction)
-      Uranium  → DepletedUranium   (HSK refined uranium alloy — same swap
-                                     we apply to VFE Pirates / VFE Ancients)
+    Recipes restructured to match HSK convention:
 
-    Quantities preserved 1:1. Buildings still cost the same to construct
-    if a player ever places one (rare — these are quest-spawn structures),
-    just with HSK-tier materials.
+    Archotech-tier (Deadlife caskets — high-tech relics):
+      Pattern reference: HSK uses Plasteel + ComponentSpacer + DepletedUranium
+      for ultratech archotech items.
+
+    Mid-tier industrial (Military Turrets — equivalent to HSK MiniTurret):
+      Pattern reference: HSK Turret_MiniTurret family — SteelBar +
+      ComponentIndustrial.
+
+    Joy/Electronics (Kino Screen + Projector):
+      Pattern reference: HSK Tube/Flat/MegascreenTelevision family —
+      ComponentIndustrial driven, with Plasteel for large screens.
 -->
 <Patch>
 
-    <!-- ===== Steel → SteelBar ===== -->
-
-    <!-- Open Deadlife Casket: Steel:25 → SteelBar:25 -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="VQED_OpenDeadlifeCasket"]/costList/Steel</xpath>
-        <value><SteelBar>25</SteelBar></value>
-    </Operation>
-
-    <!-- Closed Deadlife Casket: Steel:25 → SteelBar:25 -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="VQED_ClosedDeadlifeCasket"]/costList/Steel</xpath>
-        <value><SteelBar>25</SteelBar></value>
-    </Operation>
-
-    <!-- Dormant Military Turret: Steel:10 → SteelBar:10 -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="VQED_DormantMilitaryTurret"]/costList/Steel</xpath>
-        <value><SteelBar>10</SteelBar></value>
-    </Operation>
-
-    <!-- Ancient Military Turret: Steel:10 → SteelBar:10 -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="VQED_AncientMilitaryTurret"]/costList/Steel</xpath>
-        <value><SteelBar>10</SteelBar></value>
-    </Operation>
-
-    <!-- Ancient Kino Screen: Steel:150 → SteelBar:150 -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="VQED_AncientKinoScreen"]/costList/Steel</xpath>
-        <value><SteelBar>150</SteelBar></value>
-    </Operation>
-
-    <!-- Ancient Kino Projector: Steel:30 → SteelBar:30 -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="VQED_AncientKinoProjector"]/costList/Steel</xpath>
-        <value><SteelBar>30</SteelBar></value>
-    </Operation>
-
-    <!-- ===== Uranium → DepletedUranium ===== -->
+    <!-- ===== Archotech-tier: Deadlife caskets ===== -->
 
     <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="VQED_OpenDeadlifeCasket"]/costList/Uranium</xpath>
-        <value><DepletedUranium>3</DepletedUranium></value>
+        <xpath>Defs/ThingDef[defName="VQED_OpenDeadlifeCasket"]/costList</xpath>
+        <value>
+            <costList>
+                <Plasteel>15</Plasteel>
+                <DepletedUranium>3</DepletedUranium>
+                <ComponentSpacer>2</ComponentSpacer>
+                <ChunkSlagSteel>1</ChunkSlagSteel>
+            </costList>
+        </value>
     </Operation>
 
     <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="VQED_ClosedDeadlifeCasket"]/costList/Uranium</xpath>
-        <value><DepletedUranium>3</DepletedUranium></value>
+        <xpath>Defs/ThingDef[defName="VQED_ClosedDeadlifeCasket"]/costList</xpath>
+        <value>
+            <costList>
+                <Plasteel>15</Plasteel>
+                <DepletedUranium>3</DepletedUranium>
+                <ComponentSpacer>2</ComponentSpacer>
+                <ChunkSlagSteel>1</ChunkSlagSteel>
+            </costList>
+        </value>
+    </Operation>
+
+    <!-- ===== Mid-tier industrial: ancient military turrets ===== -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_DormantMilitaryTurret"]/costList</xpath>
+        <value>
+            <costList>
+                <SteelBar>10</SteelBar>
+                <ComponentIndustrial>1</ComponentIndustrial>
+            </costList>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_AncientMilitaryTurret"]/costList</xpath>
+        <value>
+            <costList>
+                <SteelBar>10</SteelBar>
+                <ComponentIndustrial>1</ComponentIndustrial>
+            </costList>
+        </value>
+    </Operation>
+
+    <!-- ===== Joy / electronics: ancient kino projection system ===== -->
+
+    <!-- Kino Screen — Megascreen-tier (large display, Plasteel screen) -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_AncientKinoScreen"]/costList</xpath>
+        <value>
+            <costList>
+                <SteelBar>50</SteelBar>
+                <Plasteel>10</Plasteel>
+                <ComponentIndustrial>4</ComponentIndustrial>
+            </costList>
+        </value>
+    </Operation>
+
+    <!-- Kino Projector — Flatscreen-tier (medium electronics device) -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQED_AncientKinoProjector"]/costList</xpath>
+        <value>
+            <costList>
+                <SteelBar>15</SteelBar>
+                <ComponentIndustrial>2</ComponentIndustrial>
+            </costList>
+        </value>
     </Operation>
 
 </Patch>
