@@ -1,44 +1,50 @@
 # HSK-VQE-Collection
 
-HSK/CE-patched compatibility patches for the **Vanilla Quests Expanded** mod series by Oskar Potocki et al., tuned for the [Hardcore SK](https://github.com/skyarkhangel/Hardcore-SK) modpack.
+HSK/CE-patched standalone bundles of the **Vanilla Quests Expanded** mod series by Oskar Potocki et al., tuned for the [Hardcore SK](https://github.com/skyarkhangel/Hardcore-SK) modpack.
 
-These are **thin overlay mods** — they don't fork the upstream VQE mods; they just apply XML PatchOperations on top to bring quest content into HSK conventions (HSK-native materials, CE weapon/ammo bindings, balance tweaks).
+These are **full-bundle mods** — they include the entire upstream VQE content plus HSK-native material conversions and Combat Extended patches baked in. You do **not** need the Steam Workshop versions of the upstream VQE mods. Same architecture as `HSK-VFE-*` packages (Insectoids 2, Pirates, Mechanoids, Ancients, Deserters).
 
 ## Requirements
 
 - **RimWorld 1.5**
 - **Harmony**
+- **Vanilla Expanded Framework**
 - **Hardcore SK Modpack**
 - **Combat Extended**
-- The relevant upstream **Vanilla Quests Expanded** sub-mod (each patch is gated to its own VQE target)
+- DLCs as required by each sub-mod (Anomaly for Deadlife, Biotech for VEF features in Cryptoforge insectoid race)
+
+⚠ **Do not enable the Steam Workshop versions of these VQE mods alongside these bundles** — each sub-mod declares `<incompatibleWith>` against its upstream packageId. Disable / unsubscribe from the Workshop versions before enabling these.
 
 ## What's Inside
 
-### 💀 HSK-VQE-Deadlife
-Compatibility patch for **Vanilla Quests Expanded — Deadlife**. Adapts ancient quest content to HSK's economy and CE's combat math.
+### 💀 VQE Deadlife (HSK/CE Patched)
+Standalone bundle of **Vanilla Quests Expanded — Deadlife**. Adapts ancient quest content to HSK's economy and CE's combat math.
 
-- **Material swaps** on deconstructable ancient structures so deconstruction yields HSK-tier refined materials:
+- **HSK material conversion** on deconstructable ancient structures (21 buildings) so deconstruction yields HSK-tier refined materials:
   - `Steel → SteelBar` on Open/Closed Deadlife caskets, Dormant/Ancient Military Turrets, Kino Screen, Kino Projector
   - `Uranium → DepletedUranium` on the Deadlife caskets
+  - `+ComponentIndustrial` / `+ComponentSpacer` / `+Plasteel` layers added per HSK tech tier (industrial vs ultratech)
 - **CE patches** for the 4 ancient weapons so they fire correctly under HSK CE:
   - Ancient Autopistol → 9×19mm Parabellum
   - Ancient Machine Pistol → 9×19mm Parabellum (burst)
   - Ancient Pump Shotgun → 12 Gauge buckshot
   - Ancient LMG → 7.62×51mm NATO
+- **HSK CE armor rescale** on the Military Coat (Sharp 8 / Blunt 4 + Bulk 4.0 / WornBulk 1.4)
 
 Requires **Anomaly DLC** (carried over from upstream VQE Deadlife dependency).
 
-### ⚡ HSK-VQE-Generator
-Compatibility patch for **Vanilla Quests Expanded — The Generator**. Adapts the ARC megastructure quest line to HSK's economy and CE's combat math.
+### ⚡ VQE Generator (HSK/CE Patched)
+Standalone bundle of **Vanilla Quests Expanded — The Generator**. The ARC megastructure quest line, full content + HSK/CE.
 
-- **Material swaps** on all 16 player-spawned ARC genetrons (Basic, Wood-fired ×4, Chemfuel ×4, Geothermal ×4, Nuclear ×4) and on 8 ruined ancient ARC structures so deconstruction yields HSK-tier refined materials:
+- **HSK material conversion** on all 16 player-spawned ARC genetrons (Basic, Wood-fired ×4, Chemfuel ×4, Geothermal ×4, Nuclear ×4) and 7 ruined ancient ARC structures + cryptosleep casket:
   - `Steel → SteelBar`
   - `Uranium → DepletedUranium`
-  - Plasteel / ComponentSpacer / ComponentIndustrial / Gold left as-is (already HSK-native)
+  - `Gold → GoldBar` (HSK refined alloy, used for ultratech-tier genetrons)
+  - Plasteel / ComponentSpacer / ComponentIndustrial left as-is (already HSK-native)
 - **CE patch** for the Ancient Tight Parka so it provides meaningful protection on the HSK CE armor scale (Sharp 8 / Blunt 4 + Bulk / WornBulk).
 
-### ❄️ HSK-VQE-Cryptoforge
-Compatibility patch for **Vanilla Quests Expanded — Cryptoforge**. Adapts the crashed cryptoship quest line to HSK's economy and CE's combat math.
+### ❄️ VQE Cryptoforge (HSK/CE Patched)
+Standalone bundle of **Vanilla Quests Expanded — Cryptoforge**. The crashed cryptoship quest line, full content + HSK/CE.
 
 Bundles the **official upstream CE patch** (PR #3780 by Airomeda, merged into CombatExtended-Continued) so it works inside HSK's stripped CE redistribution:
 
@@ -46,46 +52,56 @@ Bundles the **official upstream CE patch** (PR #3780 by Airomeda, merged into Co
 - Crypto armors (light / heavy + helmets) — HSK CE armor scale (Sharp 16–28, Blunt 36–60)
 - Cryptofused insectoid race — CE armor + body part scaling
 - Crypto bolt ammo + AmmoSet definitions
+- Ancient sentry turret CE conversion
 
 HSK overlay on top of the bundled CE patches:
 
 - Crypto bolt **ammo recipe**: `Steel → SteelBar` so HSK colonists craft from refined alloys
-- **Building costList** swaps on 25 deconstructable structures (cryptopods, production benches, ancient turrets, ship debris):
-  - `Steel → SteelBar`
-  - `Uranium → DepletedUranium` (cryptopods)
-- Plasteel / ComponentSpacer / ComponentIndustrial / Gold left as-is (already HSK-native)
+- **6 craftable items** (cryptoaxe, cryptobolter, 2 armors, 2 helmets): `Gold → GoldBar`
+- **25 deconstructable building costLists**: `Steel → SteelBar`
+- **2 cryptopods**: `Uranium → DepletedUranium`
+- VQE_GoldPile loot building intentionally kept as raw `Gold` (ore-pile flavor)
+- Plasteel / ComponentSpacer / ComponentIndustrial left as-is (already HSK-native)
+
+**Quest design preserved:** Cryptobolter and Cryptoaxe stay locked to the AncientCryptoforge bench during the limited quest crafting window, exactly as upstream intended. HSKRNRouter intentionally does not move them.
 
 ## Installation
 
 1. Clone or download this repo
 2. Place each subfolder in your RimWorld `Mods/` directory (or point your HSK launcher at this repo URL — it will scan the subfolders automatically)
-3. Enable each patch alongside its target VQE sub-mod
-4. Load **after** Hardcore SK, Combat Extended, and the upstream VQE mods
-
-⚠ **These patches require the upstream VQE mod they target** (e.g. HSK-VQE-Deadlife requires Vanilla Quests Expanded - Deadlife). The launcher will warn if dependencies are missing.
+3. **Disable / unsubscribe from the Steam Workshop versions** of the corresponding upstream VQE mods (Deadlife, The Generator, Cryptoforge)
+4. Enable the bundled versions in the mod menu
+5. Load **after** Hardcore SK and Combat Extended
 
 ## How It Works
 
-Each patch is a thin XML overlay using `PatchOperationReplace` / `PatchOperationAdd`:
+Each sub-mod is a full standalone fork of its upstream VQE counterpart with HSK/CE patches layered on:
 
-- **Material swaps** target `<costList>` entries on deconstructable ancient buildings and replace raw vanilla materials with HSK-tier refined alloys
-- **CE weapon patches** use `CombatExtended.PatchOperationMakeGunCECompatible` to inject `Verb_ShootCE` + `CompProperties_AmmoUser` + projectile bindings on top of the upstream weapon defs
-- No content is added or removed — purely a compatibility overlay
+- **Upstream content** (Defs, Assemblies, Patches, Textures, Sounds, Languages) is bundled directly — no external Workshop dependency
+- **HSK material swaps** apply via XML `PatchOperationReplace` overlays in `1.5/Patches/HSK_*.xml` against the bundled defs
+- **CE weapon patches** use `CombatExtended.PatchOperationMakeGunCECompatible` to inject `Verb_ShootCE` + `CompProperties_AmmoUser` + projectile bindings
+- **packageId** uses `CarbineAction.HSK.VQE.X` (not the upstream `vanillaquestsexpanded.X`) — `<incompatibleWith>` blocks dual-loading
+
+Materials all verified present in HSK Core_SK:
+- `SteelBar`, `DepletedUranium`, `GoldBar` in `Items_Resource_Alloys_Industrial.xml` / `Items_Resource_Alloys_Medieval.xml`
+- `ComponentIndustrial`, `ComponentSpacer` in `Items_Resource_Parts.xml`
+- `ChunkSlagSteel` in `Various_Stone.xml`
 
 ## Reporting Issues
 
-If you find a bug, please attach your `Player.log` and which sub-patch the issue is in. Issues without logs may be closed.
+If you find a bug, please attach your `Player.log` and specify which sub-mod the issue is in. Issues without logs may be closed.
 
 ## Authorship
 
-- Original mods: **Oskar Potocki**, **Sarg Bjornson**, **Taranchuk**, **Ferny** (Vanilla Quests Expanded series)
-- HSK/CE conversion patches: **CarbineAction**
-- CE patches by the **Combat Extended community**
-- HSK material economy and bench conventions: **Hardcore SK Team**
+- **Original mods:** Oskar Potocki, Sarg Bjornson, Taranchuk, Ferny, Bread mo (Vanilla Quests Expanded series)
+- **Cryptoforge CE patch:** Airomeda (CombatExtended-Continued PR #3780)
+- **HSK/CE conversion + bundling:** CarbineAction
+- **CE math:** Combat Extended community
+- **HSK material economy and bench conventions:** Hardcore SK Team
 
 ## License
 
-Each subfolder follows the original mod author's license where applicable. The HSK/CE compatibility work (XML patches) is released under the same terms as the upstream mods — free use, modification, and redistribution. Credit appreciated.
+Each subfolder follows the original mod author's license where applicable. The HSK/CE compatibility work (XML patches and bundling layout) is released under the same terms as the upstream mods — free use, modification, and redistribution. Credit appreciated.
 
 ## Contact
 
