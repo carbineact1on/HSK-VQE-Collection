@@ -37,6 +37,24 @@ Compatibility patch for **Vanilla Quests Expanded — The Generator**. Adapts th
   - Plasteel / ComponentSpacer / ComponentIndustrial / Gold left as-is (already HSK-native)
 - **CE patch** for the Ancient Tight Parka so it provides meaningful protection on the HSK CE armor scale (Sharp 8 / Blunt 4 + Bulk / WornBulk).
 
+### ❄️ HSK-VQE-Cryptoforge
+Compatibility patch for **Vanilla Quests Expanded — Cryptoforge**. Adapts the crashed cryptoship quest line to HSK's economy and CE's combat math.
+
+Bundles the **official upstream CE patch** (PR #3780 by Airomeda, merged into CombatExtended-Continued) so it works inside HSK's stripped CE redistribution:
+
+- Crypto weapons (Cryptobolter + Cryptoaxe) — full CE conversion preserving cryptofreeze mechanics
+- Crypto armors (light / heavy + helmets) — HSK CE armor scale (Sharp 16–28, Blunt 36–60)
+- Cryptofused insectoid race — CE armor + body part scaling
+- Crypto bolt ammo + AmmoSet definitions
+
+HSK overlay on top of the bundled CE patches:
+
+- Crypto bolt **ammo recipe**: `Steel → SteelBar` so HSK colonists craft from refined alloys
+- **Building costList** swaps on 25 deconstructable structures (cryptopods, production benches, ancient turrets, ship debris):
+  - `Steel → SteelBar`
+  - `Uranium → DepletedUranium` (cryptopods)
+- Plasteel / ComponentSpacer / ComponentIndustrial / Gold left as-is (already HSK-native)
+
 ## Installation
 
 1. Clone or download this repo

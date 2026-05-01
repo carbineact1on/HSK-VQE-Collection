@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>HSK Patch: VQE Cryptoforge</name>
+    <packageId>CarbineAction.HSK.VQE.Cryptoforge.Compat</packageId>
+    <author>CarbineAction</author>
+    <supportedVersions>
+        <li>1.5</li>
+    </supportedVersions>
+    <description>Hardcore SK + Combat Extended compatibility patch for Vanilla Quests Expanded — Cryptoforge.
+
+This patch bundles the official upstream CE patch (PR #3780 by Airomeda, merged into CombatExtended-Continued 2025-04-25) so it works inside HSK's stripped CE redistribution, then layers HSK-native material swaps on top.
+
+Bundled CE patches (covers crypto weapons, apparel, race, hediffs, sentry):
+  - VQEC_Things_Weapons.xml (Cryptobolter + Cryptoaxe CE conversion)
+  - VQEC_Apparel_Various.xml (4 crypto armor pieces, CE armor scale + Bulk)
+  - VQEC_Races_Animal_Insect.xml (cryptofused insectoid armor)
+  - VQEC_Things_Sentry.xml (ancient turret CE)
+  - VQEC_Hediffs_Global_Misc.xml
+  - VQEC_Ammo_Cryptoforge.xml (defines crypto bolt ammo + AmmoSet)
+
+HSK overlay (this mod's contribution):
+  - Ammo recipe: Steel → SteelBar so HSK colonists craft from refined alloys
+  - Building costLists: Steel → SteelBar across 25 deconstructable structures
+    (cryptopods, production benches, turrets, ship debris, decorative)
+  - Cryptopod costLists: Uranium → DepletedUranium (HSK refined isotope)
+
+Required: Vanilla Quests Expanded - Cryptoforge, Hardcore SK, Combat Extended.</description>
+    <modDependencies>
+        <li>
+            <packageId>vanillaquestsexpanded.cryptoforge</packageId>
+            <displayName>Vanilla Quests Expanded - Cryptoforge</displayName>
+        </li>
+        <li>
+            <packageId>skyarkhangel.HSK</packageId>
+            <displayName>Hardcore SK</displayName>
+        </li>
+        <li>
+            <packageId>CETeam.CombatExtended</packageId>
+            <displayName>Combat Extended</displayName>
+        </li>
+    </modDependencies>
+    <loadAfter>
+        <li>vanillaquestsexpanded.cryptoforge</li>
+        <li>skyarkhangel.HSK</li>
+        <li>CETeam.CombatExtended</li>
+    </loadAfter>
+</ModMetaData>

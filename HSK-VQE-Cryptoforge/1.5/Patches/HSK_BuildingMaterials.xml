@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    HSK material swaps for VQE Cryptoforge buildings.
+
+    All targeted buildings are deconstructable (or have killedLeavings)
+    so when players salvage quest sites they get a fraction of the
+    costList materials back. Without these patches the yield would
+    be raw Steel / Uranium — vanilla materials that don't fit HSK's
+    refined-alloy economy.
+
+    Conversion:
+      Steel    → SteelBar         (HSK refined steel)
+      Uranium  → DepletedUranium  (HSK refined isotope, used for
+                                   cryosleep pods + reactor cores)
+
+    Plasteel / ComponentIndustrial / ComponentSpacer / Gold are all
+    HSK-native already — left untouched.
+
+    Materials all verified present in HSK Core_SK:
+      Items_Resource_Alloys_Industrial.xml: SteelBar, DepletedUranium,
+                                            Plasteel
+      Items_Resource_Parts.xml:             ComponentIndustrial,
+                                            ComponentSpacer
+-->
+<Patch>
+
+    <!-- ================================================================ -->
+    <!--  CRYPTOPODS (Steel + Uranium — full pair swap)                    -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_FrozenEmptyCryptosleepPod"]/costList/Steel</xpath>
+        <value><SteelBar>50</SteelBar></value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_FrozenEmptyCryptosleepPod"]/costList/Uranium</xpath>
+        <value><DepletedUranium>6</DepletedUranium></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_FrozenFailedCryptosleepPod"]/costList/Steel</xpath>
+        <value><SteelBar>50</SteelBar></value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_FrozenFailedCryptosleepPod"]/costList/Uranium</xpath>
+        <value><DepletedUranium>6</DepletedUranium></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  POWER (cryptogenerators + coil — costList drives destroy yield)  -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_CryptofusionCoil"]/costList/Steel</xpath>
+        <value><SteelBar>60</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_FrozenCryptogenerator"]/costList/Steel</xpath>
+        <value><SteelBar>60</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_FrozenCryptogenerator_Off"]/costList/Steel</xpath>
+        <value><SteelBar>60</SteelBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  PRODUCTION BENCHES (player-craftable at AncientCryptoforge)      -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AetherPressureTubes"]/costList/Steel</xpath>
+        <value><SteelBar>100</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_CryptoInfusionCoils"]/costList/Steel</xpath>
+        <value><SteelBar>45</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_SubZeroHammer"]/costList/Steel</xpath>
+        <value><SteelBar>45</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_CryptotechPrototypeBench"]/costList/Steel</xpath>
+        <value><SteelBar>70</SteelBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  RECREATION                                                       -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientWargamingTable"]/costList/Steel</xpath>
+        <value><SteelBar>80</SteelBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  SECURITY (ancient turrets — quest-loot deconstruct)              -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientShieldedTurret"]/costList/Steel</xpath>
+        <value><SteelBar>44</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientSpacerAutocannon"]/costList/Steel</xpath>
+        <value><SteelBar>176</SteelBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  DECORATIVE SHIP DEBRIS (deconstructable junk loot)               -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_SpentCryptofusionCoil"]/costList/Steel</xpath>
+        <value><SteelBar>20</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_BustedShieldedTurret"]/costList/Steel</xpath>
+        <value><SteelBar>20</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_BustedSpacerAutocannon"]/costList/Steel</xpath>
+        <value><SteelBar>20</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_FrozenCryptoRailcannon"]/costList/Steel</xpath>
+        <value><SteelBar>100</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientShipLandingBeacon"]/costList/Steel</xpath>
+        <value><SteelBar>20</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_RuinedHospitalBed"]/costList/Steel</xpath>
+        <value><SteelBar>70</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_FrozenThrusters"]/costList/Steel</xpath>
+        <value><SteelBar>40</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_LargeFrozenThrusters"]/costList/Steel</xpath>
+        <value><SteelBar>80</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_FrozenTorpedoCrate"]/costList/Steel</xpath>
+        <value><SteelBar>80</SteelBar></value>
+    </Operation>
+
+</Patch>
