@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>HSK Patch: VQE Generator</name>
+    <packageId>CarbineAction.HSK.VQE.Generator.Compat</packageId>
+    <author>CarbineAction</author>
+    <supportedVersions>
+        <li>1.5</li>
+    </supportedVersions>
+    <description>Hardcore SK compatibility patch for Vanilla Quests Expanded — The Generator.
+
+Brings VQE Generator structures and apparel into HSK conventions:
+
+- Material swaps on all ARC genetrons (Basic, Wood-fired ×4, Chemfuel ×4, Geothermal ×4, Nuclear ×4) and ruined ancient buildings so deconstruction returns HSK-native refined materials:
+  * Steel → SteelBar
+  * Uranium → DepletedUranium
+
+- Combat Extended rescale for the Ancient Tight Parka (Sharp / Blunt / Bulk / WornBulk) so it fits HSK CE armor math.
+
+No content additions or removals — purely an XML PatchOperation overlay on top of the upstream VQE Generator mod.
+
+Required: Vanilla Quests Expanded - The Generator, Hardcore SK, Combat Extended.</description>
+    <modDependencies>
+        <li>
+            <packageId>vanillaquestsexpanded.generator</packageId>
+            <displayName>Vanilla Quests Expanded - The Generator</displayName>
+        </li>
+        <li>
+            <packageId>skyarkhangel.HSK</packageId>
+            <displayName>Hardcore SK</displayName>
+        </li>
+        <li>
+            <packageId>CETeam.CombatExtended</packageId>
+            <displayName>Combat Extended</displayName>
+        </li>
+    </modDependencies>
+    <loadAfter>
+        <li>vanillaquestsexpanded.generator</li>
+        <li>skyarkhangel.HSK</li>
+        <li>CETeam.CombatExtended</li>
+    </loadAfter>
+</ModMetaData>

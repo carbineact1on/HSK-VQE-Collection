@@ -28,6 +28,15 @@ Compatibility patch for **Vanilla Quests Expanded — Deadlife**. Adapts ancient
 
 Requires **Anomaly DLC** (carried over from upstream VQE Deadlife dependency).
 
+### ⚡ HSK-VQE-Generator
+Compatibility patch for **Vanilla Quests Expanded — The Generator**. Adapts the ARC megastructure quest line to HSK's economy and CE's combat math.
+
+- **Material swaps** on all 16 player-spawned ARC genetrons (Basic, Wood-fired ×4, Chemfuel ×4, Geothermal ×4, Nuclear ×4) and on 8 ruined ancient ARC structures so deconstruction yields HSK-tier refined materials:
+  - `Steel → SteelBar`
+  - `Uranium → DepletedUranium`
+  - Plasteel / ComponentSpacer / ComponentIndustrial / Gold left as-is (already HSK-native)
+- **CE patch** for the Ancient Tight Parka so it provides meaningful protection on the HSK CE armor scale (Sharp 8 / Blunt 4 + Bulk / WornBulk).
+
 ## Installation
 
 1. Clone or download this repo

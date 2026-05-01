@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    HSK material conversion for VQE Generator buildings.
+
+    All targeted buildings are deconstructable (vanilla default), so
+    when players raid an ARC quest site or salvage their own ARCs they
+    get a fraction of the costList materials back. Without these
+    upgrades the yield would be raw Steel / Uranium — both vanilla
+    materials that don't fit HSK's refined-alloy economy.
+
+    Conversion strategy:
+      Industrial tier (Basic, Wood, Chemfuel, low-tier Geothermal):
+        Steel → SteelBar (already had ComponentIndustrial)
+
+      Ultratech tier (high-tier Geothermal, all Nuclear):
+        Steel → SteelBar, Uranium → DepletedUranium
+        (already had Plasteel + ComponentSpacer)
+
+      Ruined ancient ARC structures (Buildings_Misc):
+        Steel → SteelBar, Uranium → DepletedUranium
+        (already had ChunkSlagSteel + ComponentIndustrial)
+
+    Materials all verified present in HSK Core_SK:
+      SteelBar, DepletedUranium, Plasteel, Gold, ComponentIndustrial,
+      ComponentSpacer, ChunkSlagSteel.
+-->
+<Patch>
+
+    <!-- ================================================================ -->
+    <!--  BASIC GENETRON                                                   -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_Basic"]/costList/Steel</xpath>
+        <value><SteelBar>440</SteelBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  WOOD-POWERED GENETRONS (industrial)                              -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_WoodFired"]/costList/Steel</xpath>
+        <value><SteelBar>200</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_WoodFueled"]/costList/Steel</xpath>
+        <value><SteelBar>400</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_WoodPowered"]/costList/Steel</xpath>
+        <value><SteelBar>450</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_WoodBlasting"]/costList/Steel</xpath>
+        <value><SteelBar>200</SteelBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  CHEMFUEL-POWERED GENETRONS (industrial)                          -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_ChemfuelPowered"]/costList/Steel</xpath>
+        <value><SteelBar>340</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_ChemfuelBoosted"]/costList/Steel</xpath>
+        <value><SteelBar>120</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_ChemfuelCharged"]/costList/Steel</xpath>
+        <value><SteelBar>100</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_ChemfuelFortified"]/costList/Steel</xpath>
+        <value><SteelBar>220</SteelBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  GEOTHERMAL GENETRONS (industrial → ultratech)                    -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_Geothermal"]/costList/Steel</xpath>
+        <value><SteelBar>300</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_SteamPowered"]/costList/Steel</xpath>
+        <value><SteelBar>100</SteelBar></value>
+    </Operation>
+
+    <!-- ThermalVent uses ComponentSpacer (ultratech) — Steel → SteelBar -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_ThermalVent"]/costList/Steel</xpath>
+        <value><SteelBar>200</SteelBar></value>
+    </Operation>
+
+    <!-- HeatPowered uses ComponentSpacer (ultratech) — Steel → SteelBar -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_HeatPowered"]/costList/Steel</xpath>
+        <value><SteelBar>400</SteelBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  NUCLEAR GENETRONS (ultratech)                                    -->
+    <!-- ================================================================ -->
+
+    <!-- UraniumPowered: keep Plasteel, swap Uranium → DepletedUranium -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_UraniumPowered"]/costList/Uranium</xpath>
+        <value><DepletedUranium>50</DepletedUranium></value>
+    </Operation>
+
+    <!-- Nuclear: Steel → SteelBar (Plasteel kept) -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Genetron_Nuclear"]/costList/Steel</xpath>
+        <value><SteelBar>100</SteelBar></value>
+    </Operation>
+
+    <!-- Isotopic: Plasteel + Gold + ComponentSpacer — already HSK native, no change -->
+    <!-- Atomic:   Plasteel + ComponentSpacer       — already HSK native, no change -->
+
+    <!-- ================================================================ -->
+    <!--  RUINED ANCIENT ARC STRUCTURES (Buildings_Misc)                   -->
+    <!-- ================================================================ -->
+
+    <!-- ARC Prototypes (industrial-tier, deconstructable loot) -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientARCPrototype_One"]/costList/Steel</xpath>
+        <value><SteelBar>100</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientARCPrototype_Two"]/costList/Steel</xpath>
+        <value><SteelBar>140</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientARCPrototype_Three"]/costList/Steel</xpath>
+        <value><SteelBar>190</SteelBar></value>
+    </Operation>
+
+    <!-- Ancient ARC variants (industrial-tier, deconstructable loot) -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientGenetron"]/costList/Steel</xpath>
+        <value><SteelBar>440</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientGeothermalGenetron"]/costList/Steel</xpath>
+        <value><SteelBar>440</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_NuclearGenetronHusk"]/costList/Steel</xpath>
+        <value><SteelBar>440</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_AncientOvergrownGenetron"]/costList/Steel</xpath>
+        <value><SteelBar>320</SteelBar></value>
+    </Operation>
+
+    <!-- ================================================================ -->
+    <!--  OVERGROWN CRYPTOSLEEP CASKET (killedLeavings, not costList)      -->
+    <!--  Not deconstructable — drops via destroy. Both materials swap.    -->
+    <!-- ================================================================ -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_OvergrownCryptosleepCasket"]/killedLeavings/Steel</xpath>
+        <value><SteelBar>130</SteelBar></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_OvergrownCryptosleepCasket"]/killedLeavings/Uranium</xpath>
+        <value><DepletedUranium>5</DepletedUranium></value>
+    </Operation>
+
+</Patch>

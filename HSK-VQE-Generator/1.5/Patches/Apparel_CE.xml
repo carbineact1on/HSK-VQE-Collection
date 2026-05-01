@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    HSK CE patches for VQE Generator combat apparel.
+
+    The mod ships one apparel piece — VQE_Apparel_Parka (Ancient Tight
+    Parka) — at vanilla armor scale (Sharp 0.4 / Blunt 0.08). HSK CE
+    uses a much higher numeric scale (vanilla parka = Sharp 5, flak
+    jacket = Sharp 12). Without this patch the parka provides
+    essentially zero protection against any modern weapon under CE.
+
+    The parka has techLevel Spacer + Insulation_Cold 68 + ancient
+    flavor — treat as a high-quality parka/duster shell. Same tier
+    as VQE-Deadlife's Military Coat patch.
+
+    Pattern reference: HSK CE parka / duster tier.
+-->
+<Patch>
+
+    <!-- ===== Ancient Tight Parka — HSK CE parka / duster tier ===== -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Apparel_Parka"]/statBases/ArmorRating_Sharp</xpath>
+        <value><ArmorRating_Sharp>8</ArmorRating_Sharp></value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQE_Apparel_Parka"]/statBases/ArmorRating_Blunt</xpath>
+        <value><ArmorRating_Blunt>4</ArmorRating_Blunt></value>
+    </Operation>
+
+    <!-- Add CE Bulk / WornBulk so the parka occupies inventory space sensibly.
+         Outerwear convention: Bulk ~4 (carrying), WornBulk ~1.4 (wearing). -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQE_Apparel_Parka"]/statBases</xpath>
+        <value>
+            <Bulk>4.0</Bulk>
+            <WornBulk>1.4</WornBulk>
+        </value>
+    </Operation>
+
+</Patch>
