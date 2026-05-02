@@ -16,15 +16,21 @@
 -->
 <Patch>
 
-    <!-- ===== Ancient Tight Parka — HSK CE parka / duster tier ===== -->
+    <!-- ===== Ancient Tight Parka — HSK CE between parka and flak =====
+         Calibrated against actual HSK CE values:
+           HSK Apparel_Parka:        Sharp 0    / Blunt 0
+           HSK Apparel_FlakJacket:   Sharp 3.2  / Blunt 4.56
+         An "ancient tight parka" sits just below flak jacket — slightly
+         tougher than a regular parka because of the ancient material, but
+         not full flak. Engineered armor pattern: Blunt > Sharp. -->
     <Operation Class="PatchOperationReplace">
         <xpath>Defs/ThingDef[defName="VQE_Apparel_Parka"]/statBases/ArmorRating_Sharp</xpath>
-        <value><ArmorRating_Sharp>8</ArmorRating_Sharp></value>
+        <value><ArmorRating_Sharp>3</ArmorRating_Sharp></value>
     </Operation>
 
     <Operation Class="PatchOperationReplace">
         <xpath>Defs/ThingDef[defName="VQE_Apparel_Parka"]/statBases/ArmorRating_Blunt</xpath>
-        <value><ArmorRating_Blunt>4</ArmorRating_Blunt></value>
+        <value><ArmorRating_Blunt>6</ArmorRating_Blunt></value>
     </Operation>
 
     <!-- Add CE Bulk / WornBulk so the parka occupies inventory space sensibly.

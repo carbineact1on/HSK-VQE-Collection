@@ -15,15 +15,22 @@
 -->
 <Patch>
 
-    <!-- ===== Military Coat — HSK CE parka / duster tier ===== -->
+    <!-- ===== Military Coat — HSK CE light flak coat tier =====
+         Calibrated against actual HSK CE values:
+           HSK Apparel_Parka:        Sharp 0    / Blunt 0
+           HSK Apparel_FlakJacket:   Sharp 3.2  / Blunt 4.56
+           HSK Apparel_FlakVest:     Sharp 6.81 / Blunt 14.97
+         A military coat sits at the light flak tier — Sharp slightly
+         above flak jacket, Blunt above it (it's a layered military coat
+         with armor liner). Engineered armor pattern: Blunt > Sharp. -->
     <Operation Class="PatchOperationReplace">
         <xpath>Defs/ThingDef[defName="VQED_Apparel_MilitaryCoat"]/statBases/ArmorRating_Sharp</xpath>
-        <value><ArmorRating_Sharp>8</ArmorRating_Sharp></value>
+        <value><ArmorRating_Sharp>4</ArmorRating_Sharp></value>
     </Operation>
 
     <Operation Class="PatchOperationReplace">
         <xpath>Defs/ThingDef[defName="VQED_Apparel_MilitaryCoat"]/statBases/ArmorRating_Blunt</xpath>
-        <value><ArmorRating_Blunt>4</ArmorRating_Blunt></value>
+        <value><ArmorRating_Blunt>8</ArmorRating_Blunt></value>
     </Operation>
 
     <!-- Add CE Bulk / WornBulk so the coat occupies inventory space sensibly.
