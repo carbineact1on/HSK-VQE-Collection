@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--
-    HSK CE patches for VQE Deadlife ancient weapons.
-
-    Without these patches the 4 ancient weapons fall back to vanilla
-    Verb_Shoot behavior under CE — they fire vanilla projectiles at
-    HSK pawns who otherwise expect CE-aware ammo + projectiles, breaking
-    accuracy / damage / armor penetration math.
-
-    Calibers picked from HSK-CE-active set (HSK disables many CE
-    calibers via .xml.bak; these are confirmed loaded in HSK CE):
-      - Ancient Autopistol      → 9x19mm Parabellum (light pistol)
-      - Ancient Machine Pistol  → 9x19mm Parabellum (burst pistol)
-      - Ancient Pump Shotgun    → 12 Gauge buckshot
-      - Ancient LMG             → 7.62x51mm NATO (M60 / FN MAG class)
-
-    Burst counts, ranges, warmup, accuracy preserved from upstream
-    so weapon feel matches the upstream balance — only the projectile
-    + ammo system gets CE-ified.
--->
+<!-- HSK CE patches for VQE Deadlife ancient weapons -->
 <Patch>
 
     <!-- ========== Ancient Autopistol — 9x19mm Parabellum ========== -->

@@ -1,27 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--
-    HSK recipe upgrades for VQE Deadlife deconstructable ancient structures.
-
-    All targeted buildings are deconstructable (vanilla default), so when
-    players raid an ancient quest site they get a fraction of the costList
-    materials back. Without these upgrades the yield would be raw Steel /
-    Uranium — both vanilla materials that don't fit HSK's
-    refined-alloy + component-tier economy.
-
-    Recipes restructured to match HSK convention:
-
-    Archotech-tier (Deadlife caskets — high-tech relics):
-      Pattern reference: HSK uses Plasteel + ComponentSpacer + DepletedUranium
-      for ultratech archotech items.
-
-    Mid-tier industrial (Military Turrets — equivalent to HSK MiniTurret):
-      Pattern reference: HSK Turret_MiniTurret family — SteelBar +
-      ComponentIndustrial.
-
-    Joy/Electronics (Kino Screen + Projector):
-      Pattern reference: HSK Tube/Flat/MegascreenTelevision family —
-      ComponentIndustrial driven, with Plasteel for large screens.
--->
+<!-- HSK recipe upgrades for VQE Deadlife deconstructable ancient structures -->
 <Patch>
 
     <!-- ===== Archotech-tier: Deadlife caskets ===== -->

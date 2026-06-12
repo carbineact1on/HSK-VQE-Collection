@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--
-    HSK CE patches for VQE Deadlife combat apparel.
-
-    Only Military Coat is combat-relevant — its upstream armor values
-    (Sharp 0.32 / Blunt 0.11) are on the vanilla armor scale. HSK CE
-    uses a much higher numeric scale (vanilla parka = Sharp 5, flak
-    jacket = Sharp 12). Without these patches the coat provides
-    essentially zero protection against any modern weapon under CE.
-
-    General's Insignia and General's Cap are intentionally cosmetic
-    (zero / token armor) — left untouched.
-
-    Pattern reference: HSK CE parka / duster / military coat tier.
--->
+<!-- HSK CE patches for VQE Deadlife combat apparel -->
 <Patch>
 
-    <!-- ===== Military Coat — HSK CE light flak coat tier =====
-         Calibrated against actual HSK CE values:
-           HSK Apparel_Parka:        Sharp 0    / Blunt 0
-           HSK Apparel_FlakJacket:   Sharp 3.2  / Blunt 4.56
-           HSK Apparel_FlakVest:     Sharp 6.81 / Blunt 14.97
-         A military coat sits at the light flak tier — Sharp slightly
-         above flak jacket, Blunt above it (it's a layered military coat
-         with armor liner). Engineered armor pattern: Blunt > Sharp. -->
+<!-- ===== Military Coat — HSK CE light flak coat tier ===== -->
     <Operation Class="PatchOperationReplace">
         <xpath>Defs/ThingDef[defName="VQED_Apparel_MilitaryCoat"]/statBases/ArmorRating_Sharp</xpath>
         <value><ArmorRating_Sharp>4</ArmorRating_Sharp></value>

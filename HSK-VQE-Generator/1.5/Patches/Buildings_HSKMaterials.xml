@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--
-    HSK material conversion for VQE Generator buildings.
-
-    All targeted buildings are deconstructable (vanilla default), so
-    when players raid an ARC quest site or salvage their own ARCs they
-    get a fraction of the costList materials back. Without these
-    upgrades the yield would be raw Steel / Uranium — both vanilla
-    materials that don't fit HSK's refined-alloy economy.
-
-    Conversion strategy:
-      Industrial tier (Basic, Wood, Chemfuel, low-tier Geothermal):
-        Steel → SteelBar (already had ComponentIndustrial)
-
-      Ultratech tier (high-tier Geothermal, all Nuclear):
-        Steel → SteelBar, Uranium → DepletedUranium
-        (already had Plasteel + ComponentSpacer)
-
-      Ruined ancient ARC structures (Buildings_Misc):
-        Steel → SteelBar, Uranium → DepletedUranium
-        (already had ChunkSlagSteel + ComponentIndustrial)
-
-    Materials all verified present in HSK Core_SK:
-      SteelBar, DepletedUranium, Plasteel, Gold, ComponentIndustrial,
-      ComponentSpacer, ChunkSlagSteel.
--->
+<!-- HSK material conversion for VQE Generator buildings -->
 <Patch>
 
     <!-- ================================================================ -->

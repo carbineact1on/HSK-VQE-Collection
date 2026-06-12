@@ -1,27 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--
-    HSK material swaps for VQE Cryptoforge buildings.
-
-    All targeted buildings are deconstructable (or have killedLeavings)
-    so when players salvage quest sites they get a fraction of the
-    costList materials back. Without these patches the yield would
-    be raw Steel / Uranium — vanilla materials that don't fit HSK's
-    refined-alloy economy.
-
-    Conversion:
-      Steel    → SteelBar         (HSK refined steel)
-      Uranium  → DepletedUranium  (HSK refined isotope, used for
-                                   cryosleep pods + reactor cores)
-
-    Plasteel / ComponentIndustrial / ComponentSpacer / Gold are all
-    HSK-native already — left untouched.
-
-    Materials all verified present in HSK Core_SK:
-      Items_Resource_Alloys_Industrial.xml: SteelBar, DepletedUranium,
-                                            Plasteel
-      Items_Resource_Parts.xml:             ComponentIndustrial,
-                                            ComponentSpacer
--->
+<!-- HSK material swaps for VQE Cryptoforge buildings -->
 <Patch>
 
     <!-- ================================================================ -->
