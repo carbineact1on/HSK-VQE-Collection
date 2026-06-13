@@ -33,7 +33,7 @@
 	<ThingDef Class="CombatExtended.AmmoDef" Name="VQEC_CryptoAmmoBase" ParentName="SpacerSmallAmmoBase" Abstract="True">
 		<description>Metal-cored projectiles wrapped in unstable crypto technology contained with an energy field. Capable of dealing both ballistic damage and causing serious hypothermia.</description>
 		<graphicData>
-			<texPath>ThirdParty/VanillaExpanded/Crypto</texPath>
+			<texPath>Things/Ammo/Charged/MediumIon</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
 		</graphicData>
 		<tradeTags>
